@@ -10210,7 +10210,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: fe2cee5beeea4294881cb0bf76e2befe, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -19104,6 +19104,8 @@ MonoBehaviour:
     clip: {fileID: 0}
     volume: 0
     pitch: 0.1
+    loop: 0
+    source: {fileID: 0}
 --- !u!4 &2124612740
 Transform:
   m_ObjectHideFlags: 0

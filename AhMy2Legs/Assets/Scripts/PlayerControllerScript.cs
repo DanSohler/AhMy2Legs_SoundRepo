@@ -30,16 +30,22 @@ public class PlayerControllerScript : MonoBehaviour
     Vector3 launchDirection; // Impulse added to player character
 
     public static PlayerControllerScript instance;
+    float elapsed = 0f;
 
     private void Awake()
     {
         instance = this;
+
+
     }
 
     private void Start()
     {
         // calls line trajectory script
         lineTraj = GetComponent<LineTrajectoryScript>();
+
+        FindObjectOfType<AudioManagerScript>().Play("bgm_main_theme");
+
     }
 
     public void Update()
@@ -86,7 +92,15 @@ public class PlayerControllerScript : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             lineTraj.RenderLine(playerPosition, currentMousePosition);
+
+            elapsed += Time.deltaTime;
+            if (elapsed >= 0.5f)
+            {
+                elapsed = elapsed % 1f;
+                FindObjectOfType<AudioManagerScript>().Play("sfx_stretch");
+            }
         }
+
 
         // Uses the players current position, and calculates the direction of the impulse 
         // by the position the mouse was before it was let go.
@@ -122,6 +136,12 @@ public class PlayerControllerScript : MonoBehaviour
                 EnergyMeterScript.instance.DrainPower(addedDirectionalForce);
                 inputTracker++;
                 TimerScript.instance.StartTimer();
+                FindObjectOfType<AudioManagerScript>().Play("sfx_release");
+            }
+            else
+            {
+                FindObjectOfType<AudioManagerScript>().Play("sfx_denial");
+
             }
             // will end line even if canSling is set to false
             lineTraj.EndLine();

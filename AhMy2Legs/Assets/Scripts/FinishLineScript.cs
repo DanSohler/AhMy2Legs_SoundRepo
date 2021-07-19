@@ -11,6 +11,8 @@ public class FinishLineScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             instance.timerActive = false;
+           // AudioManagerScript.instance.Play("Finish_Music");
+            FindObjectOfType<AudioManagerScript>().Play("sfx_finish");
         }
     }
 }

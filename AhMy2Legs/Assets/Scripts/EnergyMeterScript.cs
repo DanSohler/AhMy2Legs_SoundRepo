@@ -56,6 +56,7 @@ public class EnergyMeterScript : MonoBehaviour
         {
             PlayerControllerScript.instance.requiredPower = false;
             fillAreaImage.color = invalidPowerAmount;
+            FindObjectOfType<AudioManagerScript>().Play("sfx_exhaustion");
         }
     }
 

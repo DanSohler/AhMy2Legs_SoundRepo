@@ -48,7 +48,6 @@ public class PlayerControllerScript : MonoBehaviour
 
         FindObjectOfType<AudioManagerScript>().Play("bgm_main_theme");
         collisionElapsed += Time.deltaTime;
-        elapsed += Time.deltaTime;
     }
 
     public void Update()
@@ -96,6 +95,7 @@ public class PlayerControllerScript : MonoBehaviour
         {
             lineTraj.RenderLine(playerPosition, currentMousePosition);
 
+            elapsed += Time.deltaTime;
             if (elapsed >= 0.5f)
             {
                 elapsed = elapsed % 1f;

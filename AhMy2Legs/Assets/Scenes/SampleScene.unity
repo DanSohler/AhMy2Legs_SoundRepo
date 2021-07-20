@@ -3596,7 +3596,7 @@ GameObject:
   - component: {fileID: 451400910}
   m_Layer: 0
   m_Name: Environment
-  m_TagString: Untagged
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9351,7 +9351,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327054044}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16, y: 13, z: 0.5}
+  m_LocalPosition: {x: -16, y: 14, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 451400910}
@@ -10182,7 +10182,7 @@ GameObject:
   - component: {fileID: 1486606569}
   m_Layer: 0
   m_Name: Player_Audio_Source
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -11925,6 +11925,7 @@ GameObject:
   - component: {fileID: 1620694785}
   - component: {fileID: 1620694787}
   - component: {fileID: 1620694786}
+  - component: {fileID: 1620694788}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -12002,7 +12003,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1620694779}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.25, y: 19, z: 0}
+  m_LocalPosition: {x: 7.5, y: -2.5, z: 0.02}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1486606568}
@@ -12168,6 +12169,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wantedLineRenderer: {fileID: 1620694786}
+--- !u!65 &1620694788
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1620694779}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1, y: 1.1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1774693052
 GameObject:
   m_ObjectHideFlags: 0
@@ -19145,9 +19159,15 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: bgm_main_theme
     clip: {fileID: 8300000, guid: 344fe39ae85a7c249bd72c44c90b35bd, type: 3}
-    volume: 0.1
+    volume: 0.06
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: sfx_collission
+    clip: {fileID: 8300000, guid: 54c4665f87b2c6546a7beb8052521b68, type: 3}
+    volume: 0.3
+    pitch: 0.38
+    loop: 0
     source: {fileID: 0}
 --- !u!4 &2124612740
 Transform:

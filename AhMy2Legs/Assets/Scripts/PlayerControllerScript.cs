@@ -30,7 +30,9 @@ public class PlayerControllerScript : MonoBehaviour
     Vector3 launchDirection; // Impulse added to player character
 
     public static PlayerControllerScript instance;
-    float elapsed = 0f;
+    float elapsed = 0f; // Used in timing a repeated sound effect
+
+    bool collisionDetected = false; // Used to detect collisions with environment, disabled to prevent constant audio feedback
 
     private void Awake()
     {
@@ -136,6 +138,7 @@ public class PlayerControllerScript : MonoBehaviour
                 EnergyMeterScript.instance.DrainPower(addedDirectionalForce);
                 inputTracker++;
                 TimerScript.instance.StartTimer();
+                FindObjectOfType<AudioManagerScript>().StopPlaying("sfx_stretch");
                 FindObjectOfType<AudioManagerScript>().Play("sfx_release");
             }
             else
@@ -147,8 +150,18 @@ public class PlayerControllerScript : MonoBehaviour
             lineTraj.EndLine();
 
             // updates inputTracker UI element with amount of 'valid' inputs
-            inputTrackingText.text = ""+inputTracker;
+            inputTrackingText.text = "" + inputTracker;
+
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+    //   if (collisionDetected == true)
+    //    {
+            FindObjectOfType<AudioManagerScript>().Play("sfx_collission");
+            collisionDetected = false;
+    //    }
     }
 
 }

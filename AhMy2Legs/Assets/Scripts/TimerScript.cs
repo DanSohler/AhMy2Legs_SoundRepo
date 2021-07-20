@@ -58,6 +58,5 @@ public class TimerScript : MonoBehaviour
     public void StopTimer()
     {
         timerActive = false;
-        FindObjectOfType<AudioManagerScript>().StopPlaying("bgm_main_theme");
     }
 }

@@ -31,7 +31,7 @@ public class AudioManagerScript : MonoBehaviour
 
     public void StopPlaying(string name)
     {
-        Sounds s = Array.Find(sounds, item => item.name == name);
+        Sounds s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
             s.source.Stop();

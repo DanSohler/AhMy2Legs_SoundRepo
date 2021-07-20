@@ -31,8 +31,8 @@ public class PlayerControllerScript : MonoBehaviour
 
     public static PlayerControllerScript instance;
     float elapsed = 0f; // Used in timing a repeated sound effect
-
-    bool collisionDetected = false; // Used to detect collisions with environment, disabled to prevent constant audio feedback
+    float collisionElapsed = 0f; // Used specifically in the colission detection, prevents audio spam
+    bool collisionAllowed = false;
 
     private void Awake()
     {
@@ -47,7 +47,8 @@ public class PlayerControllerScript : MonoBehaviour
         lineTraj = GetComponent<LineTrajectoryScript>();
 
         FindObjectOfType<AudioManagerScript>().Play("bgm_main_theme");
-
+        collisionElapsed += Time.deltaTime;
+        elapsed += Time.deltaTime;
     }
 
     public void Update()
@@ -95,7 +96,6 @@ public class PlayerControllerScript : MonoBehaviour
         {
             lineTraj.RenderLine(playerPosition, currentMousePosition);
 
-            elapsed += Time.deltaTime;
             if (elapsed >= 0.5f)
             {
                 elapsed = elapsed % 1f;
@@ -152,16 +152,25 @@ public class PlayerControllerScript : MonoBehaviour
             // updates inputTracker UI element with amount of 'valid' inputs
             inputTrackingText.text = "" + inputTracker;
 
+
+            // checks if a certain amount of time has passed before sound effect is played again
+            if (collisionElapsed <= 1f)
+            {
+                collisionElapsed = collisionElapsed % 1f;
+                collisionAllowed = true;
+            }
+
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-    //   if (collisionDetected == true)
-    //    {
+        if (collisionAllowed == true)
+        {
             FindObjectOfType<AudioManagerScript>().Play("sfx_collission");
-            collisionDetected = false;
-    //    }
+            collisionAllowed = false;
+        }
+
     }
 
 }

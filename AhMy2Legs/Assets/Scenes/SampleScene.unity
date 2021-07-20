@@ -19116,13 +19116,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: sfx_finish
-    clip: {fileID: 8300000, guid: fe2cee5beeea4294881cb0bf76e2befe, type: 3}
+    clip: {fileID: 8300000, guid: ec8a856fdcbf4c94aa823cc6eb9835d6, type: 3}
     volume: 1
     pitch: 1
     loop: 0
     source: {fileID: 0}
   - name: ui_timer_tick
-    clip: {fileID: 8300000, guid: 0f504e0eb4460fe4a87eabcaa1fed035, type: 3}
+    clip: {fileID: 8300000, guid: 3b30b223ca44a734e87716f3f62b43af, type: 3}
     volume: 1
     pitch: 1
     loop: 0
